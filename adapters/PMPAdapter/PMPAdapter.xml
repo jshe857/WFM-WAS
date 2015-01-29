@@ -12,19 +12,26 @@
 		<connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
 			<protocol>https</protocol>
 			<domain>sydgsa.ibm.com</domain>
-			<port>443</port>	
+			<!--<port>443</port> -->
 			<!-- Following properties used by adapter's key manager for choosing specific certificate from key store  
 			<sslCertificateAlias></sslCertificateAlias> 
 			<sslCertificatePassword></sslCertificatePassword>
 			-->		
-			 <connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
+			<connectionTimeoutInMilliseconds>30000</connectionTimeoutInMilliseconds>
             <socketTimeoutInMilliseconds>30000</socketTimeoutInMilliseconds>
             <!--The previous elements: <connectionTimeoutInMilliseconds> and <socketTimeoutInMilliseconds>, were added to <connectionPolicy> element. These elements correspond to TCP connection and socket timeouts when connecting to the back-end. For more details, see HTTP protocol specifications and "Adapter timeout and concurrency" topic in the product Knowledge Center.-->
+<!--             <authentication> -->
+<!--                 <basic/> -->
+<!--                 <serverIdentity> -->
+<!--                     <username>pracavai</username> -->
+<!--                     <password>!u8i9o0p</password> -->
+<!--                 </serverIdentity> -->
+<!--             </authentication>   -->
             <authentication>
                 <basic/>
                 <serverIdentity>
-                    <username>pracavai</username>
-                    <password>!u8i9o0p</password>
+                    <username> pracavai</username>
+                    <password> !u8i9o0p</password>
                 </serverIdentity>
             </authentication>  
 		<maxConcurrentConnectionsPerNode>2</maxConcurrentConnectionsPerNode>

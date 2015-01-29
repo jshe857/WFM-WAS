@@ -14,7 +14,7 @@
  *  	path: value,
  *  	
  *  	// Optional 
- *  	returnedContentType: any known mime-type or one of "json", "css", "csv", "javascript", "plain", "xml", "html"  
+ *  	returnedContentType: any known mime-type or one of "json", "css", "csv", "plain", "xml", "html"  
  *  	returnedContentEncoding : 'encoding', 
  *  	parameters: {name1: value1, ... }, 
  *  	headers: {name1: value1, ... }, 
@@ -29,31 +29,21 @@
  *  	} 
  *  } 
  */
-var clientID = "5dceb7cd-b733-4281-8a95-79530a0d4a96"
-var groupName = "blue"
-var blueGroupUrl = "https://w3.api.ibm.com/common/run/bluegroup/members/"+ groupName +"?attrib=uid&client_id=" + clientID
-var csvServer = "sydgsa.ibm.com/projects/p/practitioneravailability/"
 
-function getCSVList() {
-	
-	
-	//WL.Logger.error("test");
-	//WL.Logger.warn("test");
-	//WL.Logger.warn(WL.Server.configuration);
-	//WL.Logger.warn(WL.Server.configuration["ssl.keystore.path"]);
+var clientID = "5dceb7cd-b733-4281-8a95-79530a0d4a96"
+var groupName = "anseele" // "blue"
+var blueGroupUrl = "https://w3.api.ibm.com/common/run/bluegroup/members/"+ groupName +"?attrib=uid&client_id=" + clientID
+var blueGroupPath = "/common/run/bluegroup/members/"+ groupName +"?attrib=email&client_id=" + clientID
+
+function getGroup() {
+	WL.Logger.warn("test");
 	
 	var input = {
 	        method : 'get',
-	        returnedContentType : 'csv',
-	        path : "/projects/p/practitioneravailability/GBS Bench Report.csv"
+	        returnedContentType : 'json',
+	        path : blueGroupPath
 	    };
 	
-	
-	//			sydgsa.ibm.com
-	//			/projects/p/practitioneravailability/GBS%20Bench%20Report.csv
-	//			sydgsa.ibm.com/projects/p/practitioneravailability/GBS%20Bench%20Report.csv
-
 	return WL.Server.invokeHttp(input);
 }
-
 
