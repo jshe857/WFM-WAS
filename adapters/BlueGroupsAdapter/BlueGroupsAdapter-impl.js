@@ -35,15 +35,43 @@ var groupName = "anseele" // "blue"
 var blueGroupUrl = "https://w3.api.ibm.com/common/run/bluegroup/members/"+ groupName +"?attrib=uid&client_id=" + clientID
 var blueGroupPath = "/common/run/bluegroup/members/"+ groupName +"?attrib=email&client_id=" + clientID
 
-function getGroup() {
-	WL.Logger.warn("test");
+/**
+ * @param userEmail
+ *            Has to be a user's email address
+ * @returns true/false if user has access to WFM
+ */
+function getGroup(userEmail) {
 	
+	//WL.Logger.error("test umail xcode");
+	//WL.Logger.warn("Email Is:");
+	//WL.Logger.warn(userEmail);
+
 	var input = {
 	        method : 'get',
 	        returnedContentType : 'json',
 	        path : blueGroupPath
 	    };
 	
-	return WL.Server.invokeHttp(input);
+	// Get members in bluegroup, returned as JSON
+	var response = WL.Server.invokeHttp(input);
+	var membersArry = response.group;
+	
+	var userAuthenticated = false;
+	
+	// Find if user is has access as listed in Bluegroups
+	for (var i = 0; i < membersArry.length; i++) {
+		var currEmail = membersArry[i].member;		
+	   if(userEmail == currEmail) { //Email Found
+		   userAuthenticated = true;
+		   break;
+	   }
+	}
+	
+	// Data returned has to be a JSON Object
+	var returnJSONData= '{ "isAuthenticated" : ' + userAuthenticated +' }';
+	var returnJSON = JSON.parse(returnJSONData);
+
+	return returnJSON;
 }
+
 

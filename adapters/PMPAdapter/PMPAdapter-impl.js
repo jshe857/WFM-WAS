@@ -37,8 +37,8 @@ var csvServer = "sydgsa.ibm.com/projects/p/practitioneravailability/"
 function getCSVList() {
 	
 	
-	//WL.Logger.error("test");
-	//WL.Logger.warn("test");
+	WL.Logger.error("test");
+	WL.Logger.warn("test");
 	//WL.Logger.warn(WL.Server.configuration);
 	//WL.Logger.warn(WL.Server.configuration["ssl.keystore.path"]);
 	
