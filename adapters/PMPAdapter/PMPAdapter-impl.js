@@ -29,7 +29,7 @@ function getCSVList() {
 	var data = response.text;
 	
 	var array = CSVToArray(data);
-	return {"data":array};
+	return response;
 }
 
 function CSVToArray( strData, strDelimiter ){
